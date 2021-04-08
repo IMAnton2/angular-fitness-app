@@ -9,14 +9,13 @@ import { MaterialModule } from "./material.module";
 import { SignupComponent } from "./auth/signup/signup.component";
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SignupComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MaterialModule,
-    SignupComponent
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
