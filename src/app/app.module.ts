@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { LayoutModule } from "@angular/cdk/layout";
 
 import { MaterialModule } from "./material.module";
+import { SignupComponent } from "./auth/signup/signup.component";
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,7 +15,8 @@ import { MaterialModule } from "./material.module";
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MaterialModule
+    MaterialModule,
+    SignupComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
