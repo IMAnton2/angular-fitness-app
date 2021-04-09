@@ -11,7 +11,6 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   imports: [
@@ -25,8 +24,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatPaginatorModule,
     MatSortModule,
     MatFormFieldModule,
-    MatInputModule,
-    FlexLayoutModule
+    MatInputModule
   ],
   exports: [
     MatToolbarModule,
@@ -39,8 +37,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatPaginatorModule,
     MatSortModule,
     MatFormFieldModule,
-    MatInputModule,
-    FlexLayoutModule
+    MatInputModule
   ]
 })
 export class MaterialModule {}

@@ -4,6 +4,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { LayoutModule } from "@angular/cdk/layout";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { MaterialModule } from "./material.module";
 import { SignupComponent } from "./auth/signup/signup.component";
@@ -24,7 +25,8 @@ import { TrainingComponent } from "./training/training.component";
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
