@@ -5,6 +5,7 @@ import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { LayoutModule } from "@angular/cdk/layout";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { FormsModule } from "@angular/forms";
 
 import { MaterialModule } from "./material.module";
 import { SignupComponent } from "./auth/signup/signup.component";
@@ -26,7 +27,8 @@ import { TrainingComponent } from "./training/training.component";
     BrowserAnimationsModule,
     LayoutModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
