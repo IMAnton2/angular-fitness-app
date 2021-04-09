@@ -9,6 +9,8 @@ import { MatSliderModule } from "@angular/material/slider";
 import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
 
 @NgModule({
   imports: [
@@ -20,7 +22,9 @@ import { MatSortModule } from "@angular/material/sort";
     MatSliderModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports: [
     MatToolbarModule,
@@ -31,7 +35,9 @@ import { MatSortModule } from "@angular/material/sort";
     MatSliderModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class MaterialModule {}
