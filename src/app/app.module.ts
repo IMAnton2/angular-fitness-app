@@ -12,9 +12,13 @@ import { SignupComponent } from "./auth/signup/signup.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { WelcomeComponent } from "./welcome/welcome.component";
 import { TrainingComponent } from "./training/training.component";
+import { HeaderComponent } from "./navigation/header/header.component";
+import { sidenavListComponent } from "./navigation/sidenav-list/sidenav-list.component";
 
 @NgModule({
   declarations: [
+    HeaderComponent,
+    sidenavListComponent,
     AppComponent,
     SignupComponent,
     LoginComponent,
