@@ -15,6 +15,9 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatTabsModule } from "@angular/material/tabs";
+import { MatCardModule } from "@angular/material/card";
+import { MatSelectModule } from "@angular/material/select";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @NgModule({
   imports: [
@@ -32,7 +35,10 @@ import { MatTabsModule } from "@angular/material/tabs";
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCardModule,
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatToolbarModule,
@@ -49,7 +55,10 @@ import { MatTabsModule } from "@angular/material/tabs";
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCardModule,
+    MatSelectModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialModule {}
