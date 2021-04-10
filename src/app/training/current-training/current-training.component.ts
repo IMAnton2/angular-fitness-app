@@ -20,7 +20,7 @@ export class CurrentTrainingComponent implements OnInit {
     this.timer = setInterval(() => {
       this.progress += 0.125;
       this.roundProgress = Math.floor(this.progress);
-      console.log(Math.floor(this.progress));
+      // console.log(Math.floor(this.progress));
       if (this.progress >= 100) {
         clearInterval(this.timer);
       }
@@ -33,13 +33,17 @@ export class CurrentTrainingComponent implements OnInit {
 
   stopTimer() {
     clearInterval(this.timer);
-    this.dialog.open(StopTraningComponent, {
-      data: { progress: this.progress }
+    const dialogRef = this.dialog.open(StopTraningComponent, {
+      data: { progress: this.roundProgress }
     });
-    this.stopTraining.emit();
+    // this.stopTraining.emit();
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      result ? this.stopTraining.emit() : this.startTimer();
+    });
   }
 
-  
   pauseTimer() {
     this.timerRunning ? clearInterval(this.timer) : this.startTimer();
     this.timerRunning = !this.timerRunning;
