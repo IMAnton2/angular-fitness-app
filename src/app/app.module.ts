@@ -17,9 +17,11 @@ import { sidenavListComponent } from "./navigation/sidenav-list/sidenav-list.com
 import { NewTrainingComponent } from "./training/start-training/start-training.component";
 import { PastTrainingComponent } from "./training/past-training/past-training.component";
 import { CurrentTrainingComponent } from "./training/current-training/current-training.component";
+import { StopTraningComponent } from "./training/current-training/stop-training.component";
 
 @NgModule({
   declarations: [
+    StopTraningComponent,
     HeaderComponent,
     sidenavListComponent,
     AppComponent,
