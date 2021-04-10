@@ -38,6 +38,8 @@ export class CurrentTrainingComponent implements OnInit {
     });
     this.stopTraining.emit();
   }
+
+  
   pauseTimer() {
     this.timerRunning ? clearInterval(this.timer) : this.startTimer();
     this.timerRunning = !this.timerRunning;
