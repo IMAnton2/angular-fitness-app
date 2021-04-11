@@ -1,18 +1,37 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild
+} from "@angular/core";
+import { Subscription } from "rxjs";
+import { Exercise } from "./exercise.model";
+import { TrainingService } from "./training.service";
 
 @Component({
   selector: "app-training",
   templateUrl: "./training.component.html",
   styleUrls: ["./training.component.css"]
 })
-export class TrainingComponent implements OnInit {
+export class TrainingComponent implements OnInit, OnDestroy {
   @ViewChild("test", { static: true }) test: ElementRef;
   ongoingTraining = false;
-  constructor() {}
+  trainingSubscription: Subscription;
+  currentTraining: Exercise;
+  constructor(private trainingService: TrainingService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.trainingSubscription = this.trainingService.exerciseChanged.subscribe(
+      exercise => {
+        exercise
+          ? (this.ongoingTraining = true)
+          : (this.ongoingTraining = false);
+      }
+    );
+  }
 
-  printText(text: string) {
-    console.log(text, this.test);
+  ngOnDestroy() {
+    this.trainingSubscription.unsubscribe();
   }
 }

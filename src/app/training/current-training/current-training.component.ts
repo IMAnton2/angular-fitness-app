@@ -1,6 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
-import { timer } from "rxjs";
+import { TrainingService } from "../training.service";
 import { StopTraningComponent } from "./stop-training.component";
 
 @Component({
@@ -9,22 +9,26 @@ import { StopTraningComponent } from "./stop-training.component";
   styleUrls: ["./current-training.component.css"]
 })
 export class CurrentTrainingComponent implements OnInit {
-  @Output() stopTraining = new EventEmitter<void>();
   progress = 0;
   timer: any;
   roundProgress = 0;
   timerRunning = true;
-  constructor(private dialog: MatDialog) {}
+  constructor(
+    private dialog: MatDialog,
+    private trainingService: TrainingService
+  ) {}
 
   startTimer() {
+    const step =
+      (this.trainingService.getSelectedExercise().duration / 100) * 1000;
     this.timer = setInterval(() => {
-      this.progress += 0.125;
+      this.progress += 1;
       this.roundProgress = Math.floor(this.progress);
-      // console.log(Math.floor(this.progress));
       if (this.progress >= 100) {
         clearInterval(this.timer);
+        this.trainingService.completedExercise();
       }
-    }, 25);
+    }, step);
   }
 
   ngOnInit() {
@@ -32,15 +36,18 @@ export class CurrentTrainingComponent implements OnInit {
   }
 
   stopTimer() {
-    clearInterval(this.timer);
+    this.timerRunning ? this.pauseTimer() : null;
     const dialogRef = this.dialog.open(StopTraningComponent, {
-      data: { progress: this.roundProgress }
+      data: {
+        progress: this.roundProgress,
+        exercise: this.trainingService.getSelectedExercise()
+      }
     });
-    // this.stopTraining.emit();
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      result ? this.stopTraining.emit() : this.startTimer();
+      result
+        ? this.trainingService.stopExercise(this.progress)
+        : this.pauseTimer();
     });
   }
 
