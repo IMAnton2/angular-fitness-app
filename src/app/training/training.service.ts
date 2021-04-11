@@ -6,6 +6,7 @@ import { Exercise } from "./exercise.model";
 export class TrainingService {
   private exercises: Exercise[] = [];
   exerciseChanged = new Subject<Exercise>();
+  exerciseEnded = new Subject<void>();
   availbleExercises: Exercise[] = [
     { id: "crunches", name: "Crunches", duration: 30, calories: 8 },
     { id: "touch-toes", name: "Touch Toes", duration: 180, calories: 15 },
@@ -39,6 +40,7 @@ export class TrainingService {
     });
     this.selectedExercise = null;
     this.exerciseChanged.next(null);
+    this.exerciseEnded.next();
   }
 
   completedExercise() {
@@ -49,6 +51,7 @@ export class TrainingService {
     });
     this.selectedExercise = null;
     this.exerciseChanged.next(null);
+    this.exerciseEnded.next();
   }
 
   getPastExercises() {
