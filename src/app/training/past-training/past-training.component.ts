@@ -5,6 +5,7 @@ import {
   OnInit,
   ViewChild
 } from "@angular/core";
+import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { Subscription } from "rxjs";
@@ -18,6 +19,7 @@ import { TrainingService } from "../training.service";
 })
 export class PastTrainingComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns = ["date", "name", "duration", "calories", "state"];
 
   sub = new Subscription();
@@ -32,6 +34,10 @@ export class PastTrainingComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+  doFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   ngOnDestroy() {
