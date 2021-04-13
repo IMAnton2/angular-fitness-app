@@ -18,9 +18,8 @@ import { NewTrainingComponent } from "./training/start-training/start-training.c
 import { PastTrainingComponent } from "./training/past-training/past-training.component";
 import { CurrentTrainingComponent } from "./training/current-training/current-training.component";
 import { StopTraningComponent } from "./training/current-training/stop-training.component";
-// import { AngularFireModule } from "angularfire2";
-// import { environment } from "../environments/environment";
-// import { AngularFirestoreModule } from "angularfire2/firestore";
+import { AngularFireModule } from "angularfire2";
+import { environment } from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -44,8 +43,7 @@ import { StopTraningComponent } from "./training/current-training/stop-training.
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
-    // AngularFireModule.initializeApp(environment.firebase),
-    // AngularFirestoreModule
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent],
