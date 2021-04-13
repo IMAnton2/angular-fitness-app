@@ -18,6 +18,9 @@ import { NewTrainingComponent } from "./training/start-training/start-training.c
 import { PastTrainingComponent } from "./training/past-training/past-training.component";
 import { CurrentTrainingComponent } from "./training/current-training/current-training.component";
 import { StopTraningComponent } from "./training/current-training/stop-training.component";
+// import { AngularFireModule } from "angularfire2";
+// import { environment } from "../environments/environment";
+// import { AngularFirestoreModule } from "angularfire2/firestore";
 
 @NgModule({
   declarations: [
@@ -40,7 +43,9 @@ import { StopTraningComponent } from "./training/current-training/stop-training.
     LayoutModule,
     MaterialModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    // AngularFireModule.initializeApp(environment.firebase),
+    // AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent],
