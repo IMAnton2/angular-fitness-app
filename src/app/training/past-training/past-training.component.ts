@@ -31,10 +31,10 @@ export class PastTrainingComponent implements OnInit, OnDestroy, AfterViewInit {
     // this.sub = this.trainingService.exerciseEnded.subscribe(() => {
     //   this.dataSource.data = this.trainingService.fetchPastExercises();
     // });
+    this.trainingService.fetchPastExercises();
     this.sub = this.trainingService.finishedExerciseChanged.subscribe(
       (exercises: Exercise[]) => {
         this.dataSource.data = exercises;
-        console.log("exercises test: ", exercises);
       }
     );
   }
