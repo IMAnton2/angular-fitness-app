@@ -1,22 +1,37 @@
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { Exercise } from "./exercise.model";
+import { AngularFirestore } from "@angular/fire/firestore";
 
 @Injectable({ providedIn: "root" })
 export class TrainingService {
   private exercises: Exercise[] = [];
   exerciseChanged = new Subject<Exercise>();
+  exercisesChanged = new Subject<Exercise[]>();
   exerciseEnded = new Subject<void>();
-  availbleExercises: Exercise[] = [
-    { id: "crunches", name: "Crunches", duration: 30, calories: 8 },
-    { id: "touch-toes", name: "Touch Toes", duration: 180, calories: 15 },
-    { id: "side-lunges", name: "Side Lunges", duration: 120, calories: 18 },
-    { id: "burpees", name: "Burpees", duration: 60, calories: 8 }
-  ];
+  availbleExercises: Exercise[] = [];
   private selectedExercise: Exercise;
 
+  constructor(private db: AngularFirestore) {}
+
   getAvailbleExercises() {
-    return this.availbleExercises.slice();
+    this.db
+      .collection("availableExercises")
+      .snapshotChanges()
+      .map(docArray => {
+        return docArray.map(doc => {
+          return {
+            id: doc.payload.doc.id,
+            name: doc.payload.doc.data().name,
+            duration: doc.payload.doc.data().duration,
+            calories: doc.payload.doc.data().calories
+          };
+        });
+      })
+      .subscribe((exercises: Exercise[]) => {
+        this.availbleExercises = exercises;
+        this.exercisesChanged.next([...this.availbleExercises]);
+      });
   }
 
   startExercise(selectedId: string) {
@@ -31,7 +46,7 @@ export class TrainingService {
   }
 
   stopExercise(progress: number) {
-    this.exercises.push({
+    this.addDataToDatabase({
       ...this.selectedExercise,
       duration: this.selectedExercise.duration * (progress / 100),
       calories: this.selectedExercise.calories * (progress / 100),
@@ -44,7 +59,7 @@ export class TrainingService {
   }
 
   completedExercise() {
-    this.exercises.push({
+    this.addDataToDatabase({
       ...this.selectedExercise,
       date: new Date(),
       state: "completed"
@@ -56,5 +71,9 @@ export class TrainingService {
 
   getPastExercises() {
     return this.exercises.slice();
+  }
+
+  private addDataToDatabase(exercise: Exercise) {
+    
   }
 }

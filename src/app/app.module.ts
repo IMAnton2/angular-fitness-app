@@ -20,6 +20,7 @@ import { CurrentTrainingComponent } from "./training/current-training/current-tr
 import { StopTraningComponent } from "./training/current-training/stop-training.component";
 import { AngularFireModule } from "@angular/fire";
 import { environment } from "../environments/environment";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { environment } from "../environments/environment";
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent],
