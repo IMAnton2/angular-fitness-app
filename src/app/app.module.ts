@@ -18,7 +18,7 @@ import { NewTrainingComponent } from "./training/start-training/start-training.c
 import { PastTrainingComponent } from "./training/past-training/past-training.component";
 import { CurrentTrainingComponent } from "./training/current-training/current-training.component";
 import { StopTraningComponent } from "./training/current-training/stop-training.component";
-import { AngularFireModule } from "angularfire2";
+import { AngularFireModule } from "@angular/fire";
 import { environment } from "../environments/environment";
 
 @NgModule({
