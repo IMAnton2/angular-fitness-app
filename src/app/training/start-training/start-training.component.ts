@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { AngularFirestore } from "@angular/fire/firestore/firestore";
 import { Exercise } from "../exercise.model";
 import { TrainingService } from "../training.service";
 
@@ -11,7 +12,7 @@ export class NewTrainingComponent implements OnInit {
   // @Output() startTraining = new EventEmitter<void>();
   exercises: Exercise[];
 
-  constructor(private trainingService: TrainingService) {}
+  constructor(private trainingService: TrainingService, private db: AngularFirestore) {}
 
   ngOnInit() {
     this.exercises = this.trainingService.getAvailbleExercises();
